@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>Character Game</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+
+	<div id="character" style="position:absolute; top:0px; left:0px;">A</div>
+
+	<script>
+
+
+	function gameLoop()
+	{
+		$('#character').css("left", x+"px");
+	}
+
+	setInterval(gameLoop, 150);
+
+	var x=0, y=0;
+	document.onkeydown = function(e)
+	{
+		if(e.keyCode == 37)
+		{
+			x = x-10;
+		}
+		else if(e.keyCode == 39)
+		{
+			x = x+10;
+		}
+
+		console.log(e.keyCode, x);
+	}
+
+	console.log(document);
+	</script>
+
+</body>
+</html>
