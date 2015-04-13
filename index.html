@@ -5,14 +5,14 @@
 </head>
 <body>
 
-	<div id="character" style="position:absolute; top:0px; left:0px;">&#213;</div>
+	<!-- <div id="character" style="position:absolute; top:0px; left:0px;">&#213;</div> -->
+	<div id="character" style="position:absolute; top:0px; left:0px;"><img id="ninja" src="img/right1.png" alt="ninja"></div>
 
 	<script>
 
-
 	function gameLoop()
 	{
-		$('#character').css("left", x+"px");
+		$('#character').css({left: x, top: y});
 	}
 
 	setInterval(gameLoop, 150);
@@ -20,16 +20,56 @@
 	var x=0, y=0;
 	document.onkeydown = function(e)
 	{
-		if(e.keyCode == 37)
+		if(e.keyCode == 37 && x >= 10)
 		{
+			if(x %20 == 0)
+			{
+				$('#ninja').attr("src", "img/left1.png");
+			}
+			else
+			{
+				$('#ninja').attr("src", "img/left2.png");
+			}
 			x = x-10;
 		}
-		else if(e.keyCode == 39)
+		else if(e.keyCode == 39 && x <= 500)
 		{
+			if(x %20 == 0)
+			{ 
+				$('#ninja').attr("src", "img/right1.png");
+			}
+			else
+			{
+				$('#ninja').attr("src", "img/right2.png");
+			}
 			x = x+10;
 		}
+		else if(e.keyCode == 38 && y >= 10)
+		{
+			if(y %20 == 0)
+			{ 
+			$('#ninja').attr("src", "img/top1.png");
+			}
+			else
+			{
+				$('#ninja').attr("src", "img/top2.png");
+			}
+			y = y-10;
+		}
+		else if(e.keyCode == 40 && y <= 500)
+		{
+			if(y %20 == 0)
+			{ 
+				$('#ninja').attr("src", "img/down1.png");
+			}
+			else
+			{
+				$('#ninja').attr("src", "img/down2.png");
+			}
+			y = y+10;
+		}
 
-		console.log(e.keyCode, x);
+		console.log(e.keyCode, x, y);
 	}
 
 	console.log(document);
